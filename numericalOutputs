@@ -1,0 +1,63 @@
+=== 1. Preprocessing & Feature Engineering ===
+  Post_ID Platform  Total_Interactions  Engagement_Rate
+0  Post_1  Twitter              106743         0.044803
+1  Post_2  YouTube              542032         0.147405
+2  Post_3   TikTok              253543         0.060905
+3  Post_4  Twitter              566346         4.479239
+4  Post_5  Twitter              607820         0.161175
+
+Normalization & Standardization successfully applied.
+
+=== 2. Descriptive Statistics & EDA ===
+                  Mean     Median       Std Dev  Skewness  Kurtosis
+Views     2.481932e+06  2428391.0  1.439849e+06  0.029923 -1.198532
+Likes     2.488957e+05   249600.0  1.438039e+05  0.005501 -1.180068
+Shares    4.926148e+04    49118.0  2.917914e+04  0.031592 -1.245641
+Comments  2.503599e+04    24544.5  1.452418e+04  0.031438 -1.195889
+
+--- Correlation Matrix ---
+             Views     Likes    Shares  Comments
+Views     1.000000  0.001998 -0.007965  0.012242
+Likes     0.001998  1.000000  0.002853  0.000830
+Shares   -0.007965  0.002853  1.000000 -0.019951
+Comments  0.012242  0.000830 -0.019951  1.000000
+
+=== 3. Inferential Statistics ===
+Stratified sample size: 501 rows
+T-Test p-value: 0.9313
+
+--- ANOVA Results ---
+                   sum_sq      df         F    PR(>F)
+C(Platform)  2.793922e+12     3.0  0.449071  0.717964
+Residual     1.036096e+16  4996.0       NaN       NaN
+
+Chi-Square Test p-value: 0.6549
+
+=== 4. Regression & Predictive Modeling ===
+Linear Regression R² Score: 0.0002
+Logistic Regression Accuracy: 0.9810
+
+=== 5. Multivariate Analysis ===
+Explained Variance Ratio by top 2 PCA components: [0.25686138 0.25030857]
+Clustering completed. Assigned clusters for first 5 rows:
+0    1
+1    2
+2    2
+3    2
+4    2
+Name: Cluster, dtype: int32
+
+=== 6. Time-Series Analysis ===
+ADF Statistic: -9.2093
+p-value: 0.0000 (Stationary if p < 0.05)
+
+--- ARIMA Model Summary ---
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+ar.L1         -0.0306      0.078     -0.390      0.696      -0.184       0.123
+ma.L1         -0.9806      0.025    -39.165      0.000      -1.030      -0.931
+sigma2      1.167e+11   7.08e-14   1.65e+24      0.000    1.17e+11    1.17e+11
+==============================================================================
+
+=== Pipeline Execution Completed Successfully! ===
